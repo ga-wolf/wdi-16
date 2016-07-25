@@ -1,0 +1,9 @@
+Print out all lines with the word Marx
+- ` cat residents.txt | grep "Marx" `
+
+Print out all lines with the word marx or Marx
+- ` cat residents.txt | grep -i "Marx" `
+
+Print out the count of both of those two previous things
+- ` cat residents.txt | grep -c "Marx" `
+- ` cat residents.txt | grep -c -i "Marx" `
