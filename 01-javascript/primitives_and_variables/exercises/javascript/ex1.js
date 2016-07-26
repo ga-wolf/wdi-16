@@ -10,4 +10,4 @@ var geoLocation = "Sydney";
 var job = "Landscape Gardener";
 var fortune = "You will be a " + job + " in " + geoLocation + " and married to " + partner + " with " + children + " kids.";
 
-console.log(fortune);
+console.log( fortune );

@@ -2,7 +2,6 @@
 //
 // Forgot how old someone is? Calculate it!
 //
-
 // Store the current year in a variable.
 var currentYear = 2016;
 

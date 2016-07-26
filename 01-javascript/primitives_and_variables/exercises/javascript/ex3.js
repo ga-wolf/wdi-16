@@ -17,7 +17,6 @@ var daysRemaining = yearsRemaining * 365.2425;
 var totalHotDogs = daysRemaining * hotDogs;
 var totalHotDogs = Math.ceil(daysRemaining * hotDogs);
 
-
 // Output the result to the screen like so: "You will need NN to last you until the ripe old age of X".
 var hotDogsRequired = "You will need " + totalHotDogs + " to last you until the ripe old age of " + maxAge;
 

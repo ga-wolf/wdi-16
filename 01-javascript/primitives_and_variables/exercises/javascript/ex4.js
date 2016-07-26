@@ -6,7 +6,6 @@
 var r = 2;
 
 // Calculate the circumference based on the radius, and output "The circumference is NN".
-
 var circum = 2 * Math.PI * r;
 console.log("The circumference is " + circum);
 
