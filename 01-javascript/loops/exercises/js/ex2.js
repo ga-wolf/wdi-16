@@ -8,11 +8,11 @@ for (var i = 0; i <= 10; i++) {
     console.log(message);
 }
 
-
-
 //
 // Bonus: Use a nested for loop to show the tables for every multiplier from 1 to 10 (100 results total).
 
+
+// But, at Tomas' suggestion, let's marke it even more flexible by creating a function that takes the min and max
 var calculateNumbers = function(min,max) {
     for (var i = min; i <= max; i++) {
         for (var j = min; j <= max; j++) {
