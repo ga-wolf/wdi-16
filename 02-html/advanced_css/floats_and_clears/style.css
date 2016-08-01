@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+}
+
+.container {
+  width: 1500px;
+  background: black;
+  margin: 0 auto; /* Centers any block-level element */
+}
+
+.leftSidebar {
+  width: 70%;
+  height: 300px;
+  background: lightslategray;
+  display: inline-block;
+}
+
+.rightSidebar {
+  width: 29.7%;
+  height: 200px;
+  background: salmon;
+  display: inline-block;
+}
+
+.container-float {
+  width: 1500px;
+  background: gainsboro;
+  margin: 50px auto;
+}
+
+.left {
+  display: inline-block;
+  float: left;
+  height: 400px;
+  width: 60%;
+  background: lightslategray;
+}
+
+.right {
+  display: inline-block;
+  float: right;
+  height: 300px;
+  width: 40%;
+  background: salmon;
+}
+
+.clear {
+  clear: both;
+  height: 2px;
+  background: black;
+}
+
+.overflowed-container {
+  overflow: hidden; /* Overflow isn't meant to do this */
+}
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.one, .three {
+  float: left;
+  height: 200px;
+  width: 30%;
+  background: green;
+}
+
+.two {
+  float: left;
+  height: 300px;
+  width: 40%;
+  background: hotpink;
+}

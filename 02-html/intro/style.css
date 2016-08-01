@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+  /*
+    For every element on the page, if you set a width and/or a height, that will include padding, and border. If we didn't have this line, padding and border would add to the width
+  */
+}
+
+body {
+  background: gainsboro;
+  /*color: hotpink;*/
+  text-align: center;
+  margin: 0;
+}
+
+p {
+  color: hotpink;
+}
+
+.trendy {
+  color: lemonchiffon;
+}
+
+#veryTrendy {
+  color: rebeccapurple;
+}
+
+.trendiest {
+  color: ghostwhite;
+}
+
+p:hover, p#veryTrendy:hover  {
+  color: chartreuse;
+}
+
+/* Pseudo-selectors: ways to select elements based on state */
+input:active, input:focus {
+  border: 50px solid black; /* Variadic Attributes */
+}
+
+ul li {
+  color: lightslategray;
+}
+
+img.cage {
+  width: 300px;
+  height: 300px;
+  border-radius: 0%; /* rounded corners */
+  transition: all 0.5s linear;
+  transform: rotate(0deg);
+}
+
+img.cage:hover {
+  border-radius: 50%;
+  transform: rotate(360deg);
+}
+
+/*
+  Box model determines the size of the elements
+  size: content width + padding width + border width + margin width
+  box-sizing: content width + padding width + border width is what you define
+*/
+body p.main {
+  color: black;
+  border: 1px solid hotpink;
+  padding: 10px;
+  /*margin: 20px;*/
+  width: 50%;
+  background: white;
+}
+
+img.first {
+  width: 200px;
+  padding: 10px;
+  border: 10px solid black;
+  /*box-sizing: border-box;*/
+}
+
+/*
+  DISPLAY PROPERTY
+  none
+  block (elements can't sit next to it, we can set widths and heights)
+  inline (elements can sit next to it, we can't set widths and heights)
+  inline-block (elements can sit next to it, we can set widths and heights)
+*/
+
+
+.left {
+  width: 50%;
+  height: 200px;
+  background: red;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+.right {
+  width: 50%;
+  height: 300px;
+  background: orange;
+  display: inline-block;
+}
+
+.right div {
+  width: 50%;
+  height: 100px;
+  background: green;
+}
