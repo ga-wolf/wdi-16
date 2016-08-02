@@ -1,0 +1,104 @@
+<!-- Generate full pages: ! or html:5 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+  <!-- Generate elements: tagname -->
+
+  <!-- Generate classes: tagname.className -->
+  <div class="container"></div>
+  <div class="container clearfix"></div>
+
+  <!-- Generate ids: tagname#idName -->
+  <div id="idName"></div>
+  <h2 id="importantHeading"></h2>
+
+  <!-- Generate ids and classes: tagname.className#idName -->
+  <h2 class="heading" id="important"></h2>
+
+  <!-- Add texts to elements: tagname{Text goes here} -->
+  <!-- h1{Hello World} -->
+  <h1>Hello World</h1>
+  <!-- p{Some gibberish} -->
+  <p>Some gibberish</p>
+
+  <!-- a[href="https://ga.co"] -->
+  <a href="https://ga.co"></a>
+  <!-- img[src="http://fillmurray.com/200/200"] -->
+  <img src="http://fillmurray.com/200/200" alt="Bill Murray">
+
+  <!-- a[href="https://ga.co"]{General Assembly} -->
+  <a href="https://ga.co">General Assembly</a>
+
+  <!-- a.someClass#someId[href="https://ga.co"]{General Assembly} -->
+  <a href="https://ga.co" class="someClass" id="someId">General Assembly</a>
+
+  <!-- Creating siblings - + -->
+  <!-- h1+a -->
+  <h1></h1>
+  <a href=""></a>
+
+  <!-- header+div.container+footer -->
+  <header></header>
+  <div class="container"></div>
+  <footer></footer>
+
+  <!-- Creating children - > -->
+  <!-- header>h1 -->
+  <header>
+    <h1></h1>
+  </header>
+
+  <!-- div.container>p>lorem -->
+  <div class="container">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic perferendis, nostrum voluptates sit, dolorum aliquam aperiam mollitia magni error, quod praesentium ea fugit nihil? Rerum recusandae delectus cumque, temporibus tempore.</p>
+  </div>
+
+  <!-- ul>li*5 -->
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <!-- ol>li*3>a -->
+  <ol>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+  </ol>
+
+  <!-- ol*3>li*3>a -->
+
+  <!-- Creating groups: () -->
+
+  (header>h1)+(div>h2)+(footer>h3)
+  <header>
+    <h1></h1>
+  </header>
+  <div>
+    <h2></h2>
+  </div>
+  <footer>
+    <h3></h3>
+  </footer>
+
+  <!-- (ul>li*3)+(p>lorem) -->
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente similique modi nisi optio accusamus aliquam molestiae voluptas enim ex reprehenderit esse architecto commodi animi, omnis vitae eveniet, harum, quam hic.</p>
+
+</body>
+</html>
+
+
+<!-- (header>h1>a{Hello World}[href="http://ga.co"])+(div.container>img[src="http://fillmurray.com/200/200"]+div.columns>div.column*3>h3{Some article}+p>lorem)+(footer>ul>li*5>a{Some important link}) -->

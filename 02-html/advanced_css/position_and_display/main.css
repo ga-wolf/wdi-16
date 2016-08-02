@@ -1,0 +1,160 @@
+body {
+  /*text-align: center;*/
+  height: 3000px;
+}
+
+body, p {
+  margin: 0;
+}
+
+h1 {
+  background-color: gainsboro;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 5px solid black;
+
+  margin-top: 10px;
+  margin-bottom: 20px;
+  /*margin-left: 50px;
+  margin-right: 50px;*/
+
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flawed, .perfect {
+  height: 50px;
+  width: 200px;
+  margin: 10px auto;
+}
+
+.flawed {
+  background-color: salmon;
+  padding: 50px;
+  border: 10px solid black;
+}
+
+.perfect {
+  background-color: lightslategray;
+  padding: 50px;
+  border: 10px solid black;
+
+  box-sizing: border-box;
+}
+
+.display h2, .display p {
+  display: inline-block;
+  padding-right: 20px;
+  width: 500px;
+}
+
+.manipulate {
+  display: none;
+}
+
+.column {
+  display: inline-block;
+  width: 33%;
+  /*text-align: center;*/
+  background: rebeccapurple;
+}
+
+/*.column img {
+  display: block;
+  margin: 0 auto;
+}*/
+
+.relative {
+  position: relative;
+  top: 100px;
+  left: 0px;
+}
+
+.relativeTwo {
+  position: relative;
+  top: -60px;
+}
+
+button {
+  padding: 10px 30px;
+  background: lightslategray;
+  color: salmon;
+  border: 3px dashed chartreuse;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+  top: 0px;
+  transition: top 0.5s;
+}
+/* Pseudo-selectors */
+button:hover {
+  top: 5px;
+}
+
+.absolute {
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  /*background: rebeccapurple;*/
+}
+
+.landingPage {
+  background-image: url(http://66.media.tumblr.com/254ac7dbf2abc04a51ae6edf75878bfe/tumblr_o83yvbE7Bx1tv4hrso1_1280.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 600px;
+  font-family: monospace;
+}
+
+h2 {
+  color: ghostwhite;
+  font-size: 50px;
+  text-align: center;
+  position: relative;
+  top: 150px;
+}
+
+a {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  margin-left: -100px;
+  border: 5px solid ghostwhite;
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  width: 200px;
+  text-align: center;
+  color: ghostwhite;
+  text-decoration: none;
+}
+
+nav {
+  background: darkslategray;
+  color: ghostwhite;
+  height: 80px;
+  line-height: 80px;
+  padding-left: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 218492187489127498127498127498;
+}
+
+h4 {
+  margin: 0;
+}
+
+.backToTop {
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  bottom: 30px;
+  right: 30px;
+  background: hotpink;
+}
