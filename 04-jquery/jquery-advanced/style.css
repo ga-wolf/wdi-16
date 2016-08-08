@@ -1,0 +1,19 @@
+.container {
+  max-width: 700px;
+  border: 1px solid black;
+  margin: 0 auto;
+  text-align: center;
+}
+
+p {
+  margin: 20px;
+  padding: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+button {
+  background-color: darkgrey;
+  color: white;
+}
