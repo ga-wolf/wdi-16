@@ -1,11 +1,22 @@
 <h2>This is our about page</h2>
 
 2 + 2 = <%= 2 + 2 %>
+
 <!-- Evaluate -->
-<% todos = ["Sing happy birthday", "eat cake", "stare at Badger", "Watch Satantango"] %>
+<% todos = ["Sing happy birthday", "Eat cake", "Stare at Badger", "Watch Satantango"] %>
 
 <ul>
   <% todos.each do |todo| %>
-    <li> <%= todo %> </li>
+    <li><%= todo %></li>
   <% end %>
 </ul>
+
+<!--
+  THIS IS WHAT IS GENERATED
+  <ul>
+    <li>Sing happy birthday</li>
+    <li>Eat cake</li>
+    <li>Stare at Badger</li>
+    <li>Watch Satantango</li>
+  </ul>
+-->
