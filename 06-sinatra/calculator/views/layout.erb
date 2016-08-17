@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Sinatra Application</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/calculate">Calculate</a>
+  </nav>
+
+  <h1>All of our generic content</h1>
+
+  <div class="yield">
+    <h1>All of our specific content (loaded in the yield statement)</h1>
+    <%= yield %>
+  </div>
+
+</body>
+</html>

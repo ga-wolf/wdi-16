@@ -1,0 +1,12 @@
+body {
+  background: gainsboro;
+}
+
+a {
+  color: rebeccapurple;
+}
+
+.yield {
+  border: 50px solid black;
+  padding: 100px;
+}
