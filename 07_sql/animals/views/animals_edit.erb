@@ -1,0 +1,20 @@
+<h2>This should show the edit form</h2>
+
+The ID is <%= @animal["id"] %>
+
+<form action="/animals/<%= @animal['id'] %>" method="POST">
+  <!-- p*3>input+label -->
+  <p>
+    <label>Species: </label>
+    <input type="text" name="species" value="<%= @animal['species'] %>">
+  </p>
+  <p>
+    <label>Image: </label>
+    <input type="text" name="image" value="<%= @animal['image'] %>">
+  </p>
+  <p>
+    <label>Description: </label>
+    <input type="text" name="description" value="<%= @animal['description'] %>">
+  </p>
+  <input type="submit" value="Edit animal">
+</form>
