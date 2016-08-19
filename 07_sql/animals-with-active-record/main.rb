@@ -3,6 +3,21 @@ require 'pry' # Debugging
 require 'sinatra' # Web Server
 require 'sinatra/reloader' # Don't restart the server every change we make
 
+require 'active_record'
+ActiveRecord::Base.establish_connection(
+  :adapter => "sqlite3",
+  :database => "database.db"
+)
+ActiveRecord::Base.logger = Logger.new( STDERR )
+
+class Animal < ActiveRecord::Base
+  belongs_to :habitat
+end
+
+class Habitat < ActiveRecord::Base
+  has_many :animals
+end
+
 get '/' do # localhost:4567/
   erb :home
 end
@@ -12,12 +27,58 @@ get '/pry' do # Not necessary, but useful for debugging
   "Pry route"
 end
 
-get '/animals' do # localhost:4567/animals INDEX
-  db = SQLite3::Database.new("database.db")
-  db.results_as_hash = true
-  @all_animals = db.execute "SELECT * FROM animals;"
-  db.close
+get '/habitats' do
+  @all_habitats = Habitat.all
+  erb :habitats_index
+end
 
+get '/habitats/new' do
+  erb :habitats_new
+end
+
+post '/habitats' do
+  Habitat.create({
+    :landscape => params[:landscape],
+    :climate => params[:climate]
+  })
+  redirect "/habitats"
+end
+
+# Create a route that handles the submission of the edit form
+get '/habitats/:id/edit' do
+  @habitat = Habitat.find params[:id]
+  erb :habitats_edit
+end
+
+post '/habitats/:id' do
+  habitat = Habitat.find params[:id]
+  habitat.climate = params[:climate]
+  habitat.landscape = params[:landscape]
+  habitat.save
+  redirect "/habitats/#{params[:id]}"
+end
+
+get '/habitats/:id' do
+  @habitat = Habitat.find params[:id]
+  erb :habitats_show
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+get '/animals' do # localhost:4567/animals INDEX
+  @all_animals = Animal.all
   erb :animals_index
 end
 
@@ -26,64 +87,41 @@ get '/animals/new' do
 end
 
 post '/animals' do
-  description = params[:description].gsub "'", "\'"
-  sql = "INSERT INTO animals (species, image, description) VALUES ('#{params[:species]}', '#{params[:image]}', '#{params[:description]}');"
-
-  db = SQLite3::Database.new("database.db")
-  db.results_as_hash = true
-  db.execute sql
-  db.close
-
+  # animal = Animal.new
+  # animal.species = params[:species]
+  # animal.image = params[:image]
+  # animal.description = params[:description]
+  # animal.save
+  Animal.create({
+    :species => params[:species],
+    :image => params[:image],
+    :description => params[:description]
+  })
   redirect "/animals"
 end
 
 get '/animals/:id/edit' do
-  db = SQLite3::Database.new("database.db")
-  db.results_as_hash = true
-
-  @animal = db.execute( "SELECT * FROM animals WHERE id == #{params[:id]};" ).first
-  db.close
-
+  @animal = Animal.find params[:id]
   erb :animals_edit
 end
 
 post '/animals/:id' do
-  sql = "UPDATE animals SET species = '#{params[:species]}', image = '#{params[:image]}', description = '#{params[:description]}' WHERE id == #{params[:id]};"
-
-  puts "\n\n"
-  p params
-  puts "\n"
-  p sql
-  puts "\n\n"
-
-  db = SQLite3::Database.new("database.db")
-  db.results_as_hash = true
-  db.execute sql
-  db.close
+  animal = Animal.find params[:id]
+  animal.species = params[:species]
+  animal.image = params[:image]
+  animal.description = params[:description]
+  animal.save
 
   redirect "/animals/#{params[:id]}"
 end
 
 get '/animals/:id/delete' do
-  db = SQLite3::Database.new("database.db")
-  db.results_as_hash = true
-
-  db.execute "DELETE FROM animals WHERE id == #{params[:id]};"
-  db.close
-
+  animal = Animal.find params[:id]
+  animal.destroy
   redirect "/animals"
 end
 
 get '/animals/:id' do
-  db = SQLite3::Database.new("database.db")
-  db.results_as_hash = true
-
-  @animal = db.execute( "SELECT * FROM animals WHERE id == #{params[:id]};" ).first
-  db.close
-
-  puts "\n\n"
-  p @animal
-  puts "\n\n"
-
+  @animal = Animal.find params[:id]
   erb :animals_show
 end

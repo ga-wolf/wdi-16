@@ -1,0 +1,13 @@
+<h2>This should show all of the habitats in our system</h2>
+
+<% @all_habitats.each do |habitat| %>
+  <ul>
+    <li>
+      <a href="/habitats/<%= habitat.id %>">
+        The ID is <%= habitat.id %>
+      </a>
+    </li>
+    <li>The landscape is <%= habitat.landscape %></li>
+    <li>The climate is <%= habitat.climate %></li>
+  </ul>
+<% end %>

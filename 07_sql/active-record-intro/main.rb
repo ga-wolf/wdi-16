@@ -44,3 +44,20 @@ bill = User.create({
 })
 
 p User.where( :first_name => "Bill" )
+
+# UPDATE
+bill = User.find_by( :last_name => "Murray" )
+bill.first_name = "William"
+bill.save
+
+jacques = User.find_by :first_name => "Jacques"
+jacques.update :description => "EXPLORER"
+
+# DELETE
+donald = User.create :first_name => "Donald", :last_name => "Trump", :username => "eagle", :description => "Make Active Record great again"
+
+p User.all.length
+donald.destroy
+p User.all.length
+
+# User.destroy_all
