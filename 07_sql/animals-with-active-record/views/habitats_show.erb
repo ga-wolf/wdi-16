@@ -6,3 +6,17 @@
 
 <a href="/habitats/<%= @habitat.id %>/edit">Edit this habitat</a>
 <a href="/habitats/<%= @habitat.id %>/delete">Delete this habitat</a>
+
+<hr>
+
+<h2>There are <%= @habitat.animals.length %> animal(s) living here</h2>
+
+<ul>
+  <% @habitat.animals.each do |animal| %>
+    <li>
+      <a href="/animals/<%= animal.id %>">
+        <%= animal.species %>
+      </a>
+    </li>
+  <% end %>
+</ul>

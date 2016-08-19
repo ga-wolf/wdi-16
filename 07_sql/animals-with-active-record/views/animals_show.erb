@@ -1,7 +1,7 @@
 <h2>GET /animals/:id - This should show one animal with the ID of <%= @animal["id"] %></h2>
 
 <h3><%= @animal["species"] %></h3>
-<h3><%= @animal["image"] %></h3>
+<!-- <h3><%#= @animal["image"] %></h3> -->
 
 <img src="<%= @animal['image'] %>">
 
@@ -9,3 +9,10 @@
 
 <a href="/animals/<%= @animal['id'] %>/edit">Edit this animal</a>
 <a href="/animals/<%= @animal['id'] %>/delete">Delete this animal</a>
+
+<hr>
+<h2>This should show this animal's habitat</h2>
+
+<a href="/habitats/<%= @animal.habitat.id %>">
+  <%= @animal.habitat.landscape %>
+</a>

@@ -6,7 +6,7 @@
       <a href="/animals/<%= animal["id"] %>">ID of <%= animal["id"] %></a>
     </li>
     <li>Species: <%= animal["species"] %></li>
-    <li>Image: <%= animal["image"] %></li>
+    <li><img class="thumbnail" src="<%= animal["image"] %>"></li>
     <li>Description: <%= animal["description"] %></li>
   </ul>
 <% end %>

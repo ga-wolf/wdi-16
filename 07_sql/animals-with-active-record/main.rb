@@ -12,11 +12,16 @@ ActiveRecord::Base.logger = Logger.new( STDERR )
 
 class Animal < ActiveRecord::Base
   belongs_to :habitat
+  # WE NEED TO ADD habitat_id TO THE ANIMALS TABLE TO GET THIS WORKING
 end
+# a = Animal.find( 1 ) # habitat_id == 2
+# a.habitat
 
 class Habitat < ActiveRecord::Base
   has_many :animals
 end
+# h = Habitat.find( 2 )
+# h.animals #
 
 get '/' do # localhost:4567/
   erb :home
@@ -58,24 +63,16 @@ post '/habitats/:id' do
   redirect "/habitats/#{params[:id]}"
 end
 
+get '/habitats/:id/delete' do
+  habitat = Habitat.find params[:id]
+  habitat.destroy
+  redirect "/habitats"
+end
+
 get '/habitats/:id' do
   @habitat = Habitat.find params[:id]
   erb :habitats_show
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 get '/animals' do # localhost:4567/animals INDEX
   @all_animals = Animal.all
@@ -87,15 +84,11 @@ get '/animals/new' do
 end
 
 post '/animals' do
-  # animal = Animal.new
-  # animal.species = params[:species]
-  # animal.image = params[:image]
-  # animal.description = params[:description]
-  # animal.save
   Animal.create({
     :species => params[:species],
     :image => params[:image],
-    :description => params[:description]
+    :description => params[:description],
+    :habitat_id => params[:habitat_id].to_i
   })
   redirect "/animals"
 end
@@ -110,6 +103,7 @@ post '/animals/:id' do
   animal.species = params[:species]
   animal.image = params[:image]
   animal.description = params[:description]
+  animal.habitat_id = params[:habitat_id].to_i
   animal.save
 
   redirect "/animals/#{params[:id]}"

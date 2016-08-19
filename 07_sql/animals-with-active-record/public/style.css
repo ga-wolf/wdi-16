@@ -10,3 +10,11 @@ a {
   border: 10px solid black;
   padding: 20px;
 }
+
+img {
+  max-width: 60%;
+}
+
+.thumbnail {
+  max-width: 140px;
+}
