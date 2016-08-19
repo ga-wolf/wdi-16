@@ -1,0 +1,12 @@
+body {
+  font-family: monospace;
+}
+
+a {
+  color: rebeccapurple;
+}
+
+.container {
+  border: 10px solid black;
+  padding: 20px;
+}
