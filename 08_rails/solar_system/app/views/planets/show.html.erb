@@ -1,0 +1,17 @@
+<h2>This should show one planet</h2>
+
+<p>Name: <%= @planet.name %></p>
+<p>Number of moons: <%= @planet.moons %></p>
+<p>Orbit: <%= @planet.orbit %></p>
+
+<% if @planet.image %>
+  <p>Image: <%= image_tag( @planet.image ) %></p>
+<% end %>
+
+<p>Diameter: <%= @planet.diameter %></p>
+
+<a href="/planets/<%= @planet.id %>/edit">
+  Edit this planet
+</a>
+
+<%= button_to( "Destroy #{@planet.name}", "/planets/#{@planet.id}/delete", :method => :delete ) %>

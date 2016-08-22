@@ -1,0 +1,12 @@
+<h2>Find me in app/views/planets/index.html.erb</h2>
+<h3>This should show all planets</h3>
+
+<ul>
+  <% @planets.each do |planet| %>
+    <li>
+      <a href="/planets/<%= planet.id %>">
+        <%= planet.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
