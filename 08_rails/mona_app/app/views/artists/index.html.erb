@@ -1,0 +1,15 @@
+<h2>This should show all artists</h2>
+
+<ul>
+  <% @artists.each do |a| %>
+    <li>
+      <%= image_tag( a.image ) %>
+      <ul>
+        <li>Name: <%= link_to( a.name, "/artists/#{a.id}" ) %></li>
+        <li>Nationality: <%= a.nationality %></li>
+        <li>Date of birth: <%= a.dob %></li>
+        <li>Period: <%= a.period %></li>
+      </ul>
+    </li>
+  <% end %>
+</ul>
