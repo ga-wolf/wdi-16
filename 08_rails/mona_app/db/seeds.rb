@@ -1,5 +1,5 @@
 Artist.destroy_all
-Artist.create({
+a1 = Artist.create({
   :name => "Joan Miro",
   :nationality => "Spanish",
   :dob => "1893/04/20",
@@ -8,10 +8,14 @@ Artist.create({
 })
 
 Work.destroy_all
-Work.create({
+w1 = Work.create({
   :title => "The Flight of the Dragonfly in Front of the Sun",
   :year => '1968',
   :medium => 'oil on canvas',
   :style => 'abstract',
-  :image => 'http://www.joan-miro.net/images/paintings/the-flight-of-the-dragonfly-in-front-of-the-sun.jpg'
+  :image => 'http://www.joan-miro.net/images/paintings/the-flight-of-the-dragonfly-in-front-of-the-sun.jpg',
+  :artist_id => a1.id
 })
+
+p a1
+p w1

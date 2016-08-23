@@ -13,4 +13,5 @@
 #
 
 class Artist < ActiveRecord::Base # represent a table called artists
+  has_many :works
 end

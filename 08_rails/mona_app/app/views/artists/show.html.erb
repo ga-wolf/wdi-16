@@ -16,3 +16,9 @@
 <hr>
 
 <h3>Artworks</h3>
+
+<ul>
+  <% @artist.works.each do |w| %>
+    <li><%= link_to( w.title, "/works/#{w.id}" ) %></li>
+  <% end %>
+</ul>

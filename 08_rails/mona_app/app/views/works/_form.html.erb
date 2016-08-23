@@ -21,5 +21,11 @@
     <%= f.label :image %>
     <%= f.url_field :image, :required => true %>
   </p>
+  <p>
+    <%= f.collection_select(:artist_id, Artist.all, :id, :name) %>
+  </p>
+
+  <!-- Have a dropdown of all artists -->
+
   <%= f.submit %>
 <% end %>
