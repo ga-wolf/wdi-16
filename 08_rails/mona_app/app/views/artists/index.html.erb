@@ -7,7 +7,7 @@
       <ul>
         <li>Name: <%= link_to( a.name, "/artists/#{a.id}" ) %></li>
         <li>Nationality: <%= a.nationality %></li>
-        <li>Date of birth: <%= a.dob %></li>
+        <li>Date of birth: <%= a.dob.strftime( "%A, %B %e, %Y" ) %></li>
         <li>Period: <%= a.period %></li>
       </ul>
     </li>

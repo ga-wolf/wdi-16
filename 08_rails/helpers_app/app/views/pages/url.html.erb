@@ -1,0 +1,20 @@
+<h2>This is our URL helpers demo</h2>
+
+LINK TO: <%= link_to "Random Page", random_path() %>
+<!-- <a href="/random">
+  Random Page
+</a> -->
+
+<br>
+
+LINK TO: <%= link_to "Single Number Page", number_path(@single_number) %>
+<!-- <a href="/number/<%#= @single_number %>">
+  Single Number Page
+</a> -->
+
+<br>
+
+LINK TO: <%= link_to "Two Numbers Page", numbers_path(@x, @y) %>
+<!-- <a href="/numbers/<%#= @x %>/<%#= @y %>">
+  Two Numbers Page
+</a> -->

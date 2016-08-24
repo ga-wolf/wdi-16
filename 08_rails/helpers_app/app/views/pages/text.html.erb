@@ -1,0 +1,26 @@
+<h1>Pages#text</h1>
+<p>Find me in app/views/pages/text.html.erb</p>
+
+<p>
+  I have <%= pluralize( @friends, "friend" ) %>.
+</p>
+
+<p>
+  I have <%= pluralize( @enemies, "enemy" ) %>.
+</p>
+
+<p>
+  Someone has <%= pluralize(7, "virus") %>.
+</p>
+
+<p>
+  <%= truncate( @fairytale, :length => 120 ) %>
+</p>
+
+<ul>
+  <% @numbers.each do |num| %>
+    <li style="background-color: <%= cycle( "gainsboro", "rebeccapurple", "chartreuse", "hotpink", "lemonchiffon", "palegoldenrod" ) %>">
+      <%= num %>
+    </li>
+  <% end %>
+</ul>
