@@ -1,3 +1,26 @@
+User.destroy_all
+u1 = User.create :name => "Craig", :email => "craigsy@ga.co", :password => "chicken", :password_confirmation => "chicken"
+u2 = User.create :name => "Jonesy", :email => "jonesy@ga.co", :password => "chicken", :password_confirmation => "chicken"
+u3 = User.create :name => "Badger", :email => "badger@ga.co", :password => "chicken", :password_confirmation => "chicken"
+p "User count: #{User.all.count}"
+p u1
+
+m1 = Mixtape.create :title => "Fire"
+m2 = Mixtape.create :title => "Easter tunes"
+m3 = Mixtape.create :title => "Code jams"
+
+u1.mixtapes << m1
+u2.mixtapes << m2
+u3.mixtapes << m3
+
+p "User one mixtape count: #{u1.mixtapes.count}"
+p "User two mixtape count: #{u2.mixtapes.count}"
+p "User three mixtape count: #{u3.mixtapes.count}"
+
+p "Mixtape one, user name: #{m1.user.name}"
+p "Mixtape two, user name: #{m2.user.name}"
+p "Mixtape three, user name: #{m3.user.name}"
+
 Song.destroy_all
 s1 = Song.create :name => "All by electricity"
 s2 = Song.create :name => "Marianas Trench"
@@ -42,3 +65,11 @@ p "Third artist song count: #{r3.songs.count}"
 p "Artist name for song one: #{s1.artist.name}"
 p "Artist name for song two: #{s2.artist.name}"
 p "Artist name for song three: #{s3.artist.name}"
+
+p "Artist one's album count: #{r1.albums.count}"
+p "Artist two's album count: #{r2.albums.count}"
+p "Artist three's album count: #{r3.albums.count}"
+
+# Create a Genre model (connected to a genres table)
+  # We need a name field that saves text
+  # Work out the association between Artist and Genre
