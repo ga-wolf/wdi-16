@@ -1,0 +1,37 @@
+<%#= @user.to_json %>
+<h1><%= @user.name %></h1>
+
+<ul>
+  <li><%= @user.email %></li>
+  <li><%= @user.image %></li>
+  <li><%= @user.admin %></li>
+</ul>
+
+<div class="controls">
+  <!-- Link to edit -->
+  <%= link_to "Edit", edit_user_path( @user.id ) %>
+  <!-- Link to delete -->
+  <%= link_to "Delete Account", user_path( @user.id ), :method => :delete %>
+</div>
+
+<!-- A list of all user mixtapes -->
+<h3>User Mixtapes</h3>
+
+<% @user.mixtapes.each do |m| %>
+  <p><%= m.title %></p>
+
+  <ul>
+    <% m.songs.each do |s| %>
+      <li>
+        <%= s.name %> was created by <%= s.artist.name %>, it was on <%= s.album.name %>
+
+        <ul>
+          <% s.genres.each do |g| %>
+            <li><%= g.name %></li>
+          <% end %>
+        </ul>
+
+      </li>
+    <% end %>
+  </ul>
+<% end %>

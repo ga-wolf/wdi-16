@@ -1,0 +1,11 @@
+<h1>All Users</h1>
+
+<ul>
+  <% @users.each do |u| %>
+    <li>
+      <%= link_to( u.name, user_path( u ) ) %>
+      <%#= link_to( u.name, user_path( u ) ) %>
+      <%#= link_to( u.name, u ) %>
+    </li>
+  <% end %>
+</ul>

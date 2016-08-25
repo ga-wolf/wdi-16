@@ -1,0 +1,23 @@
+<!-- Print out all of the errors if there are any -->
+<% unless @user.errors.full_messages.empty? %>
+  <% @user.errors.full_messages.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :email %>
+    <%= f.email_field :email, :required => true %>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password, :required => true %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :required => true %>
+  </p>
+
+  <%= f.submit "Sign up" %>
+<% end %>

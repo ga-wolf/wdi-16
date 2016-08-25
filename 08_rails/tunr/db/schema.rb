@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824050726) do
+ActiveRecord::Schema.define(version: 20160825013920) do
 
   create_table "albums", force: :cascade do |t|
     t.text     "name"
@@ -27,12 +27,28 @@ ActiveRecord::Schema.define(version: 20160824050726) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres_songs", id: false, force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "song_id"
+  end
+
   create_table "mixtapes", force: :cascade do |t|
     t.string   "title"
     t.integer  "user_id"
     t.boolean  "is_fire"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mixtapes_songs", id: false, force: :cascade do |t|
+    t.integer "mixtape_id"
+    t.integer "song_id"
   end
 
   create_table "songs", force: :cascade do |t|
