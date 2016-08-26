@@ -7,12 +7,16 @@
   <li><%= @user.admin %></li>
 </ul>
 
-<div class="controls">
-  <!-- Link to edit -->
-  <%= link_to "Edit", edit_user_path( @user.id ) %>
-  <!-- Link to delete -->
-  <%= link_to "Delete Account", user_path( @user.id ), :method => :delete %>
-</div>
+<% if @current_user && @current_user.id == @user.id %>
+
+  <div class="controls">
+    <!-- Link to edit -->
+    <%= link_to "Edit", edit_user_path() %>
+    <!-- Link to delete -->
+    <%= link_to "Delete Account", user_path( @user.id ), :method => :delete %>
+  </div>
+
+<% end %>
 
 <!-- A list of all user mixtapes -->
 <h3>User Mixtapes</h3>
