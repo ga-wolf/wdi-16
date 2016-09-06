@@ -1,0 +1,37 @@
+::-webkit-input-placeholder {
+  color: green;
+  opacity: 0.5;
+}
+
+body {
+  font-family: monospace;
+  background-color: lightslategray;
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  background-color: white;
+  text-align: center;
+  overflow: hidden;
+  max-width: 1000px;
+  width: 80%;
+  min-height: 100vh;
+  padding: 0 20px;
+}
+
+input[type="text"] {
+  display: block;
+  margin: 20px auto;
+  width: 80%;
+  outline: none;
+  padding: 5px 10px; /* Variadic attributes */
+}
+
+form {
+  margin-bottom: 30px;
+}
+
+img#poster {
+  max-width: 150px;
+}
