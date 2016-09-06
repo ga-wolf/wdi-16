@@ -50,3 +50,9 @@ nav h1 {
   height: calc(100vh - 80px);
   overflow-y: auto;
 }
+
+.giphy img {
+  display: block;
+  margin: 0 auto 10px auto;
+  max-width: 100%;
+}

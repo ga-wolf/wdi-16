@@ -5,7 +5,12 @@ var $chuckStopButton = $baseChuck.find("button");
 var chuckTimer = null;
 
 var displayChuckJoke = function ( data ) {
-  console.log( data );
+  var joke = data.value.joke;
+
+  var $p = $("<p></p>");
+  $p.text( joke );
+
+  $baseChuckContent.prepend( $p );
 };
 
 var getChuckNorrisJoke = function () {
@@ -21,8 +26,9 @@ $(document).ready(function () {
 
   getChuckNorrisJoke();
 
-});
+  chuckTimer = window.setInterval(function () {
+    getChuckNorrisJoke();
+  }, 1000);
+  console.log(chuckTimer);
 
-// Display one Chuck Norris joke
-// Ask for one Chuck Norris joke
-// When to start asking for jokes
+});
