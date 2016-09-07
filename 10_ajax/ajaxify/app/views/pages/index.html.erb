@@ -1,0 +1,26 @@
+<div id="dashboard">
+  <h2 class="currentTime"></h2>
+  <p class="lotto"></p>
+  <p class="uptime"></p>
+  <p class="fortune"></p>
+</div>
+
+<div id="lucky">
+  <button>Get new numbers</button>
+  <!-- @lotto_numbers = (1..45).to_a.sample(6).join(", ") -->
+  <p><%= @lotto_numbers %></p>
+</div>
+
+<div id="uptime">
+  <button>What's uptime?</button>
+  <p>
+    <%= @uptime %>
+  </p>
+</div>
+
+<div id="fortune">
+  <button>Get a new fortune</button>
+  <p>
+    <%= @fortune %>
+  </p>
+</div>

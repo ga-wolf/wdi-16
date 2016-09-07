@@ -45,6 +45,10 @@ var generateImageURL = function ( data ) {
   // }
 
   // Construct the URL using string concatenation (and syntactic sugar)
+    // https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_{size}.jpg
+
+  // var url = "https://farm" + data.farm + ".staticflickr.com/" + data.server + "/" + data.id + "_" + data.secret + "_q.jpg";
+
   var url = "https://farm";
   url += data.farm;
   url += ".staticflickr.com/";
@@ -103,12 +107,11 @@ var searchFlickr = function ( term ) {
       api_key: API_KEY,
       text: term,
       format: "json",
-      nojsoncallback: true,
+      nojsoncallback: 1,
       // page: 1,             // This will help with pagination
       // per_page: 200        // This might help with pagination
     }
   }).done( handleSearchData ); // Once this AJAX request has been successfully completed, send all of the data (after it has been parsed by JSON), to the handleSearchData function so that we can display it
-
 };
 
 
