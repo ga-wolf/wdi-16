@@ -245,9 +245,6 @@ var sortAnimalsByType = gaZoo.sortBy("type");
 console.log( sortAnimalsByType );
 
 
-
-
-
 // console.log( gaZoo.length );
 // gaZoo.remove( ayeAye );
 // console.log( gaZoo.length );
@@ -267,15 +264,113 @@ var ZooView = Backbone.View.extend({
     // this.el === document.getElementById("app")
     // this.$el === $("#app")
 
+  events: {
+    'click h1' : 'clickHeading',
+    'click li' : 'accessAnimal',
+    'click span': 'destroyAnimal'
+  },
+
+  destroyAnimal: function ( event ) {
+    var $span = $( event.currentTarget );
+    var $li = $span.parent();
+    var txt = $li.text();
+
+    var searchTerm = txt.replace(" | Delete", "");
+
+    var animalToBeDestroyed = this.collection.findWhere({
+      type: searchTerm
+    });
+    this.collection.remove( animalToBeDestroyed );
+    console.log( this.collection.length );
+  },
+
+  accessAnimal: function ( event ) {
+    var $currentEl = $( event.currentTarget );
+    $currentEl.css({
+      color: "red"
+    });
+  },
+
+  clickHeading: function () {
+    console.log("The heading was clicked");
+  },
+
   initialize: function () {
     console.log("A new instance of the ZooView was created");
+
+    this.listenTo( this.collection, 'add', this.render );
+    this.listenTo( this.collection, 'remove', this.render );
   },
 
   render: function () {
+    // console.clear();
+    // console.log( "The current view", this );
     var appEl = this.$el; // var appEl = $("#app");
-    appEl.html("<h1>Hello World, from JavaScript</h1>");
+    appEl.html("<h1>The animals in our zoo</h1>");
+
+    var $ul = $("<ul></ul>");
+    this.collection.each(function (animal) {
+      var $li = $("<li></li>");
+      $li.text( animal.get("type") );
+
+      var $span = $("<span> | Delete</span>");
+      $li.append( $span );
+
+      $ul.append( $li );
+    });
+
+    this.$el.append( $ul );
   }
 });
 
-var zv = new ZooView();
-zv.render();
+
+// var animal = gaZoo.findWhere({
+//   type: "Animal"
+// });
+// gaZoo.remove( animal );
+
+
+// Models - represent one resource (one record in the User table)
+// Collections - represent multiple resources (all users)
+// Views - represent a collection or a model
+// Routers - control which views are being represented at a given time
+
+var Router = Backbone.Router.extend({
+  routes: {
+    '': 'showZoo', // Either no hash or a hash with nothing after it
+    'animals/:id': 'showAnimal'
+  },
+
+  showAnimal: function ( id ) {
+    $("#app").html( "<h1>Showing the animal with the id of " + id + "</h1>" );
+  },
+
+  showZoo: function () {
+
+    var zv = new ZooView({
+      collection: gaZoo // @collection = gaZoo
+    }); // This will run the initialize method on the ZooView "class"
+    zv.render();
+
+  }
+});
+
+// console.clear();
+
+var router = new Router(); // Only client-side URLs (hash fragments)
+
+$(document).ready(function () {
+  Backbone.history.start(); // Backbone will pay attention to the hash fragments
+});
+
+var goHome = function () {
+  router.navigate("/", {
+    trigger: true
+  });
+};
+
+var goSeeAnAnimal = function ( id ) {
+  router.navigate("/animals/" + id, {
+    trigger: true
+  });
+};
