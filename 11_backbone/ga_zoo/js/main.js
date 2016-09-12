@@ -259,39 +259,23 @@ console.log( sortAnimalsByType );
 // gaZoo.remove( allDead );
 
 
+// Single Page Applications (SPA)
+  // Represent the same stuff that our Rails views would do
 
+var ZooView = Backbone.View.extend({
+  el: "#app", // $("#app") - selects an existing element
+    // this.el === document.getElementById("app")
+    // this.$el === $("#app")
 
+  initialize: function () {
+    console.log("A new instance of the ZooView was created");
+  },
 
+  render: function () {
+    var appEl = this.$el; // var appEl = $("#app");
+    appEl.html("<h1>Hello World, from JavaScript</h1>");
+  }
+});
 
-
-
-// Create a collection blueprint - Zoo
-  // I want to specify the correct model - Animal
-  // I want to have event listeners for add and remove
-
-// Create a new instance of the collection blueprint
-  // Add a few elements
-  // Remove a few elements
-
-
-
-
-
-
-
-  // Make a new project
-    // Book
-      // Create three or four books
-      // Every time the title is changed, run a function
-        // The old title was ____, the new title was ____
-      // Every time anything is changed, run something as well
-      // Each book should have a set of default values
-    // Library
-      // Add all of the books you created
-      // Add another random book, and then remove it
-      // Event handlers for adding and removing here
-  // Muck around with:
-    // Plucking attributes
-    // Sorting
-    // Going through each element in a collection
-    // Using underscores templates
+var zv = new ZooView();
+zv.render();
