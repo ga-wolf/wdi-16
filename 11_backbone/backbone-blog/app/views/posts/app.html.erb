@@ -7,14 +7,12 @@
   <ul id="posts"></ul>
 </script>
 
+<!-- Two percentage signs means Rails should ignore the ERB delimiters -->
+<!-- Will be turned into one percentage sign here, meaning underscore can actually recognise the dynamic parts -->
 <script type="html/template" id="postViewTemplate">
-
   <h1><%%= title %></h1>
-
   <h2>By: <%%= author %></h2>
-
   <p>
     <%%= content %>
   </p>
-
 </script>
