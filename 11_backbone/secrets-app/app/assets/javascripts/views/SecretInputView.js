@@ -1,7 +1,8 @@
 var app = app || {};
 
 app.SecretInputView = Backbone.View.extend({
-  el: "#secretForm",
+  el: "#secretForm", // Reference an existing element (assigned to this.el and this.$el)
+    // Was added in the AppView
 
   events: {
     'click button': 'createSecret',
@@ -21,11 +22,13 @@ app.SecretInputView = Backbone.View.extend({
     var userInput = this.$el.find("textarea").val();
     newSecret.set("content", userInput);
 
+    // The newSecret doesn't have an ID, so this will send a POST request to the url (set as urlRoot) defined on the model
+    console.log( newSecret.toJSON() );
     newSecret.save().done(function () {
       console.log(newSecret.toJSON());
     });
 
-    app.secrets.add( newSecret );
+    app.secrets.add( newSecret ); // This fires the add event on app.secrets
 
     this.$el.find("textarea").val('').focus();
   },
