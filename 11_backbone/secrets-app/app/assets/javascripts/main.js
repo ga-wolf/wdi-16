@@ -17,9 +17,9 @@ $(document).ready(function () {
   app.secrets.fetch(); // GET request to the URL that is defined
     // Fires the add event on this particular instance of the app.Secrets collection if there is anything new
 
-  // window.setInterval(function () {
-  //   app.secrets.fetch();
-  // }, 2000);
+  window.setInterval(function () {
+    app.secrets.fetch();
+  }, 2000);
 
   app.router = new app.Router(); // Create an instance of the router
     // Which view should be represented at which time
