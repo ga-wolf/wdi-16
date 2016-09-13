@@ -6,8 +6,15 @@ app.Secrets = Backbone.Collection.extend({
   model: app.Secret,
 
   initialize: function () {
+    // app.secrets.add( _____ );
+    // app.secrets.fetch() - if there is new information
     this.on("add", function (secret) {
-      console.log("A secret was added");
+
+      var secretView = new app.SecretView({
+        model: secret
+      });
+      secretView.render();
+
     });
   }
 });
