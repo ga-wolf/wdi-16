@@ -323,7 +323,6 @@ var ZooView = Backbone.View.extend({
   }
 });
 
-
 // var animal = gaZoo.findWhere({
 //   type: "Animal"
 // });
