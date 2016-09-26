@@ -1,0 +1,110 @@
+/* ems, rems */
+
+html, body {
+  font-size: 10px;
+}
+
+.em {
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+img {
+  width: 100em;
+  max-width: 100%;
+}
+
+/* Apply these styles if the browser's width is less than 300px */
+@media (max-width: 300px) {
+  html, body {
+    font-size: 12px;
+  }
+
+  img {
+    /*display: none;*/
+  }
+}
+
+
+/* GRID SYSTEM */
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.container .col {
+  float: left;
+  min-height: 100px;
+  background-color: gainsboro;
+  border: 1px solid black;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 33.3333333333333%;
+  width: -webkit-calc(100% / 3);
+  width: -moz-calc(100% / 3);
+  width: -ms-calc(100% / 3);
+  width: -o-calc(100% / 3);
+  width: calc(100% / 3);
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-8 {
+  width: 66.666666666666%;
+  width: -webkit-calc(200% / 3);
+  width: -moz-calc(200% / 3);
+  width: -ms-calc(200% / 3);
+  width: -o-calc(200% / 3);
+  width: calc(200% / 3);
+}
+
+.col-9 {
+  width: 75%;
+}
+
+@media (max-width: 760px) {
+  .sm-col-3 {
+    width: 25%;
+  }
+
+  .sm-col-6 {
+    width: 50%;
+  }
+
+  .sm-col-12 {
+    width: 100%;
+  }
+}
+
+/* md-... - should work between 760px and 1200px */
+@media (max-width: 1200px) and (min-width: 761px) {
+  .md-col-3 {
+    width: 25%;
+  }
+
+  .md-col-6 {
+    width: 50%;
+  }
+
+  .md-col-12 {
+    width: 100%;
+  }
+}

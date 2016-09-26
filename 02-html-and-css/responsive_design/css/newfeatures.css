@@ -1,0 +1,66 @@
+.boxShadow {
+  width: 300px;
+  height: 300px;
+  margin: 50px auto;
+  background-color: gainsboro;
+  /* offset-x | offset-y | blur | spread */
+  /*box-shadow: 10px 10px 10px 2px hotpink, -10px -10px 10px 2px green;*/
+  box-shadow: 10px 10px 10px 2px hotpink;
+}
+
+h1 {
+  text-shadow: 10px 0px 1px black;
+}
+
+div.transition {
+  width: 200px;
+  height: 200px;
+  border: 1px solid gainsboro;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  /* which properties | how long | timing function | delay */
+  transition: all 2s ease-in 1s;
+}
+
+div.transition:hover {
+  width: 500px;
+  /*background-color: #000000;*/
+}
+
+
+
+@keyframes fade-in-and-out {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+img.bill {
+  /* Variadic Attribute */
+  animation: fade-in-and-out 2s infinite;
+  animation-direction: alternate;
+}
+
+@keyframes rotate-nick {
+  0%   {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+img.cage {
+  display: block;
+  margin: 500px auto;
+  animation: rotate-nick 5s infinite;
+  animation-timing-function: linear;
+  transform-origin: 60% 35%;
+  /*animation-direction: alternate;*/
+}
