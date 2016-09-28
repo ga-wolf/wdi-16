@@ -12,8 +12,15 @@
 
 FactoryGirl.define do
   factory :contact do
-    first_name "MyString"
-    last_name "MyString"
-    email "MyString"
+    first_name "John"
+    last_name "Doe"
+    email { Faker::Internet.email }
+    # sequence(:email) { |n| "johndoe#{n}@ga.co" }
+
+    after(:build) do |contact|
+      [:home_phone, :office_phone, :mobile_phone].each do |phone|
+        create(phone, contact: contact)
+      end
+    end
   end
 end

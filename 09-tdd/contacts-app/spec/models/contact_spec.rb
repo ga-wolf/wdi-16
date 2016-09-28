@@ -12,54 +12,42 @@
 
 require 'rails_helper'
 
-# Model tests typically include:
-  # A validity test
-  # Tests for all individual invalid cases
-  # Tests for instance methods
-  # Tests for class methods
-
 RSpec.describe Contact, type: :model do
+  it "has a valid factory" do
+    expect(build(:contact)).to be_valid
+  end
+
+  it "has three phone numbers" do
+    contact = build :contact
+    expect(contact.phones.length).to eq(3)
+  end
+
   it "is valid with a first_name, last_name and an email" do
-    contact = Contact.create(
-      :first_name => "Bill",
-      :last_name => "Murray",
-      :email => "bill@ga.co" )
+    contact = build :contact
     expect(contact).to be_valid
   end
 
   it "is invalid without a first_name" do
-    contact = Contact.new(
-      :first_name => nil,
-      :last_name => "Murray",
-      :email => "bill@ga.co" )
+    contact = build :contact, first_name: nil
     contact.valid?
     expect(contact.errors[:first_name]).to include("can't be blank")
   end
 
   it "is invalid without a last_name" do
-    contact = Contact.new(
-      :first_name => "Bill",
-      :last_name => nil,
-      :email => "bill@ga.co" )
+    contact = build :contact, last_name: nil
     contact.valid?
     expect(contact.errors[:last_name]).to include("can't be blank")
   end
 
   it "is invalid without an email" do
-    contact = Contact.new(
-      :first_name => "Bill",
-      :last_name => "Murray",
-      :email => nil )
+    contact = build :contact, email: nil
     contact.valid?
     expect(contact.errors[:email]).to include("can't be blank")
   end
 
   it "is invalid with a duplicate email address" do
-    Contact.create first_name: "Zeppo", last_name: "Marx", email: "marx@ga.co"
-    contact = Contact.new(
-      first_name: "Groucho",
-      last_name: "Marx",
-      email: "marx@ga.co" )
+    create :contact, :email => "marx@ga.co"
+    contact = build :contact, :email => "marx@ga.co"
     contact.valid?
     expect(contact.errors[:email]).to include("has already been taken")
   end
