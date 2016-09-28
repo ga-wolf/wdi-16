@@ -72,11 +72,24 @@ RSpec.describe Contact, type: :model do
     expect(contact.full_name).to eq("Harpo Marx")
   end
 
-  it "returns a sorted array of results that contain a given letter" do
-    smith = Contact.create(first_name: "John", last_name: "Smith", email: "jsmith@example.com")
-    jones = Contact.create(first_name: "Tim", last_name: "Jones", email: "tjones@example.com")
-    johnson = Contact.create(first_name: "John", last_name: "Johnson", email: "jjohnson@example.com")
+  describe "filter last name by letter" do
+    before :each do
+      @smith = Contact.create(first_name: "John", last_name: "Smith", email: "jsmith@example.com")
+      @jones = Contact.create(first_name: "Tim", last_name: "Jones", email: "tjones@example.com")
+      @johnson = Contact.create(first_name: "John", last_name: "Johnson", email: "jjohnson@example.com")
+    end
 
-    expect(Contact.by_letter("J")).to eq [johnson, jones]
+    context "with matching letters" do
+      it "returns a sorted array of results that contain a given letter" do
+        expect(Contact.by_letter("J")).to eq [@johnson, @jones]
+      end
+    end
+
+    context "with non-matching letters" do
+      it "omits contacts that don't match" do
+        expect(Contact.by_letter("J")).not_to include @smith
+      end
+    end
   end
+
 end

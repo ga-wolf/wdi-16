@@ -15,10 +15,8 @@ class Contact < ActiveRecord::Base
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
 
-  def self.some_class_method()
-    # where
-    # order
-    binding.pry
+  def self.by_letter(letter)
+    where("last_name LIKE ?", "#{letter}%").order(:last_name)
   end
 
   def full_name
