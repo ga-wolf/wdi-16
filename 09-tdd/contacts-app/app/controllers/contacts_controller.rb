@@ -17,12 +17,25 @@ class ContactsController < ApplicationController
   end
 
   def create
-    contact = Contact.create( contact_params )
-    redirect_to "/contacts/#{contact.id}"
+    @contact = Contact.new( contact_params )
+    if @contact.save
+      redirect_to "/contacts/#{@contact.id}"
+    else
+      render :new
+    end
   end
 
   def edit
     @contact = Contact.find params[:id]
+  end
+
+  def update
+    @contact = Contact.find params[:id]
+    if @contact.update contact_params
+      redirect_to @contact
+    else
+      render :edit
+    end
   end
 
   private

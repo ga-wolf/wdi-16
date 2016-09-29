@@ -87,13 +87,73 @@ RSpec.describe ContactsController, type: :controller do
         }.to change(Contact, :count).by 1
       end
 
-      it "redirect to contacts#show"
+      it "redirect to contacts#show" do
+        post( :create, contact: FactoryGirl.attributes_for(:contact) )
+        expect( response ).to redirect_to contact_path( assigns(:contact) )
+      end
     end
 
     context "with invalid attributes" do
-      it "shouldn't save the contact"
-      it "should show the new template again"
+      it "shouldn't save the contact" do
+        expect{
+          post( :create, contact: FactoryGirl.attributes_for(:contact, first_name: nil ) )
+        }.to_not change(Contact, :count)
+      end
+
+      it "should show the new template again" do
+        post :create, contact: FactoryGirl.attributes_for(:contact, first_name: nil )
+        expect(response).to render_template(:new)
+      end
     end
   end
 
+  describe "PUT #update" do
+    before(:each) do
+      @contact = FactoryGirl.create :contact, first_name: "Groucho", last_name: "Marx"
+    end
+
+    context "with valid attributes" do
+      it "locates the correct contact" do
+        put( :update, id: @contact.id, contact: FactoryGirl.attributes_for(:contact, first_name: "Groucho", last_name: "Marx") )
+        expect(assigns(:contact)).to eq(@contact)
+      end
+
+      it "changes @contact's attributes" do
+        put( :update, id: @contact.id, contact: FactoryGirl.attributes_for(:contact, first_name: "Zeppo", last_name: "Marx") )
+        @contact.reload
+        expect(@contact.first_name).to eq("Zeppo")
+      end
+
+      it "redirects to @contact's show page" do
+        put( :update, id: @contact.id, contact: FactoryGirl.attributes_for(:contact, first_name: "Groucho", last_name: "Marx") )
+        expect(response).to redirect_to(@contact)
+      end
+    end
+
+    context "with invalid attributes" do
+      it "shouldn't update @contact's attributes" do
+        put( :update, id: @contact.id, contact: FactoryGirl.attributes_for(:contact, last_name: nil) )
+        @contact.reload
+        expect(@contact.last_name).to eq("Marx")
+      end
+      it "re-renders the edit template" do
+        put( :update, id: @contact.id, contact: FactoryGirl.attributes_for(:contact, last_name: nil) )
+        expect(response).to render_template(:edit)
+      end
+    end
+  end
+
+  describe "DELETE #destroy" do
+    before(:each) do
+      @contact = create(:contact)
+    end
+
+    it "deletes the contact" do
+
+    end
+
+    it "redirects to the contacts#index page" do
+
+    end
+  end
 end
