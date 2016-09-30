@@ -1,0 +1,53 @@
+# The Rakefile in our Rails project collects all the rake tasks in various files for us, but if we're working outside of a Rails environment and wanted our Rakefile to import all the files with a .rake extension in the current working tree, we could use this:
+Dir.glob("*.rake").each do |file|
+  import(file)
+end
+
+# A rake task in its simplest form:
+task :say_hello do 
+  sh "echo hello"
+end
+
+# We would run this task with the command `rake say_hello` from the Rakefile's pwd.
+
+# We can optionally namespace our rake tasks (namespaced rake tasks can be run with `rake {namespace} {task}``, eg `rake admin makefiles`)
+namespace :admin do
+# The description will be displayed when we run `rake -T`.
+  desc "Make ten files"
+  # Since this task is namespaced within admin, we run it by calling the task with the namespace (`rake admin make_files`).
+  task :make_files do
+    # In here, we've just got good old Ruby code.
+    n = 1
+    limit = 10
+
+    limit.times do
+      sh "touch file#{n}.txt"
+      sh "echo this is file number #{n} >> file#{n}.txt"
+      n += 1
+    end
+  end
+end
+
+namespace :wolf do
+  desc "Do what he was born to do."
+  task :howl_at_the_moon do
+    puts "Currently howling at the moon."
+  end
+
+  desc "Lose track of time and start thinking about the moon."
+  task :think_of_the_moon do
+    puts "Oh no. I'm thinking about the moon again!"
+  end
+
+  desc "Figures moon is more important than friendship."
+  task :say_goodbye_and_run do
+    puts "Goodbye. I need to go somewhere now."
+    puts "...totally not moon-related."
+    puts "*runs into the night*"
+  end
+
+  desc "Being with Jack when there's a full moon."
+  task :full_moon => [:think_of_the_moon, :howl_at_the_moon, :say_goodbye_and_run] do
+    puts "Sorry about that."
+  end
+end
