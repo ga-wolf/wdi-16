@@ -1,0 +1,39 @@
+/*@keyframes drawLine {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+svg {
+  position: absolute;
+  top: 20px;
+  left: 10%;
+}
+
+rect {
+  fill: none;
+}
+
+#svg_1 {
+  stroke: hotpink;
+  stroke-width: 5;
+  stroke-dasharray: 1030;
+  stroke-dashoffset: -1030;
+  animation: drawLine 3s ease-in-out forwards;
+  animation-delay: 5s;
+  /*animation-iteration-count: infinite;*/
+}
+
+#svg_5 {
+  stroke: rebeccapurple;
+  stroke-width: 10;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: drawLine 5s ease-in-out forwards;
+  /*animation-iteration-count: infinite;*/
+  /*transition: stroke-dashoffset 2s ease-in-out;*/
+}
+
+/*svg:hover #svg_5 {
+  stroke-dashoffset: 0;
+}*/*/
