@@ -1,0 +1,46 @@
+body {
+  font-family: monospace;
+  height: 100vh;
+  overflow: hidden;
+}
+
+h1 {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  font-size: 80px;
+  transform: translate(-50%, -50%);
+}
+
+.bill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10vw;
+  height: 10vh;
+}
+
+.controls {
+  position: absolute;
+  width: 100%;
+  bottom: 50px;
+  left: 0;
+  text-align: center;
+}
+
+.controls button {
+  font-size: 25px;
+  padding: 10px 20px;
+  border: 2px solid blue;
+  color: blue;
+  background: #FFF;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+.controls button:hover {
+  color: white;
+  background: blue;
+}
