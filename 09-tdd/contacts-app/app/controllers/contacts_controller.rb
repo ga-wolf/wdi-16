@@ -6,6 +6,11 @@ class ContactsController < ApplicationController
     else
       @contacts = Contact.all
     end
+
+    respond_to do |f|
+      f.html { render :index }
+      f.json { render :json => @contacts }
+    end
   end
 
   def show
@@ -36,6 +41,12 @@ class ContactsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    contact = Contact.find params[:id]
+    contact.destroy
+    redirect_to "/contacts"
   end
 
   private

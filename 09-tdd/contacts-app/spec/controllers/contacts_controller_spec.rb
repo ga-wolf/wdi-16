@@ -23,6 +23,16 @@ RSpec.describe ContactsController, type: :controller do
     end
   end
 
+  describe "GET #index - JSON" do
+    context "without params[:letter]" do
+      it "the JSON should include all contacts" do
+        contact = create(:contact)
+        get(:index, format: :json)
+        expect(response.body).to eq( [contact].to_json )
+      end
+    end
+  end
+
   describe "GET #index" do
     context "without params[:letter]" do
       it "should populate an array of all contacts" do
@@ -149,11 +159,14 @@ RSpec.describe ContactsController, type: :controller do
     end
 
     it "deletes the contact" do
-
+      expect{
+        delete( :destroy, id: @contact.id )
+      }.to change(Contact, :count).by -1
     end
 
     it "redirects to the contacts#index page" do
-
+      delete(:destroy, id: @contact.id)
+      expect(response).to redirect_to( contacts_path() )
     end
   end
 end
