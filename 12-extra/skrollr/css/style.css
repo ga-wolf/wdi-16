@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  text-align: center;
+}
+
+img {
+  margin: 50px 0;
+}
+
+header {
+  background-color: aliceblue;
+  height: 500px;
+}
+
+.divider {
+  height: 100px;
+  width: 100%;
+  border: 1px solid black;
+}
+
+footer {
+  background-color: lightslategray;
+  height: 300px;
+}
+
+.container {
+  max-width: 960px;
+  padding: 10px 20px;
+  margin: 40px auto;
+}
+
+.col {
+  width: calc(100% / 3);
+  min-height: 300px;
+  float: left;
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  font-family: monospace;
+  text-align: center;
+}
