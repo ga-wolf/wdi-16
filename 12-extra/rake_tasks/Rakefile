@@ -4,7 +4,7 @@ Dir.glob("*.rake").each do |file|
 end
 
 # A rake task in its simplest form:
-task :say_hello
+task :say_hello do 
   sh "echo hello"
 end
 
