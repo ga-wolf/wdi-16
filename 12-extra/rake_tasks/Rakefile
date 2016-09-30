@@ -1,0 +1,41 @@
+
+Dir.glob("*.rake").each do |file|
+  import(file)
+end
+
+namespace :admin do
+  desc "Make ten files"
+  task :make_files do
+    n = 1
+    limit = 10
+
+    limit.times do
+      sh "touch file#{n}.txt"
+      sh "echo this is file number #{n} >> file#{n}.txt"
+      n += 1
+    end
+  end
+end
+
+namespace :wolf do
+  desc "Doing what he was born to do"
+  task :howl_at_the_moon do
+    puts "Currently howling at the moon"
+  end
+
+  desc "Lose track of time and start thinking about the moon"
+  task :think_of_the_moon do
+    puts "Oh no. I'm thinking about the moon again!"
+  end
+
+  desc "Figures moon is more important than friendship"
+  task :say_goodbye_and_run do
+    puts "Goodbye. I need to go somewhere now."
+    puts "...totally not moon-related"
+    puts "*runs into the night*"
+  end
+
+  task :full_moon => [:think_of_the_moon, :howl_at_the_moon, :say_goodbye_and_run] do
+    puts "Sorry about Jack. He's hairy. And greasy."
+  end
+end
