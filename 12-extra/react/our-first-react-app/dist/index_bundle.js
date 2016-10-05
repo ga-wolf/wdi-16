@@ -71,6 +71,24 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	// class SomeComponent extends React.Component {
+	//   render() {
+	//     return (<p></p>);
+	//   }
+	// }
+
+	// var SomeComponent = React.createClass({
+	//   render: function () {
+	//     return (<p></p>);
+	//   }
+	// });
+
+	// To move data between components
+	// Props
+	// Within a component
+	// Use state to change the presentation
+
+
 	var HelloUser = function (_React$Component) {
 	  _inherits(HelloUser, _React$Component);
 
@@ -136,6 +154,237 @@
 	//   <HelloWorld />,
 	//   document.getElementById("app")
 	// );
+
+	var ShowTodos = function (_React$Component3) {
+	  _inherits(ShowTodos, _React$Component3);
+
+	  function ShowTodos() {
+	    _classCallCheck(this, ShowTodos);
+
+	    var _this3 = _possibleConstructorReturn(this, (ShowTodos.__proto__ || Object.getPrototypeOf(ShowTodos)).call(this));
+
+	    _this3.state = {
+	      loading: true
+	    };
+	    return _this3;
+	  }
+
+	  _createClass(ShowTodos, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      window.setTimeout(function () {
+	        this.setState({ // Explicit Mutations
+	          loading: false
+	        });
+	      }.bind(this), 1000);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      if (!this.state.loading) {
+	        var todosItems = this.props.todos.map(function (t) {
+	          return _react2.default.createElement(
+	            'li',
+	            { key: Math.random() },
+	            t
+	          );
+	        });
+	        return _react2.default.createElement(
+	          'ul',
+	          null,
+	          todosItems
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'p',
+	          null,
+	          'Loading...'
+	        );
+	      }
+	    }
+	  }]);
+
+	  return ShowTodos;
+	}(_react2.default.Component);
+
+	ShowTodos.propTypes = {
+	  todos: _react2.default.PropTypes.array.isRequired,
+	  number: _react2.default.PropTypes.number
+	};
+	ShowTodos.defaultProps = {
+	  todos: [],
+	  number: 42
+	};
+
+	var TodosContainer = function (_React$Component4) {
+	  _inherits(TodosContainer, _React$Component4);
+
+	  function TodosContainer() {
+	    _classCallCheck(this, TodosContainer);
+
+	    return _possibleConstructorReturn(this, (TodosContainer.__proto__ || Object.getPrototypeOf(TodosContainer)).apply(this, arguments));
+	  }
+
+	  _createClass(TodosContainer, [{
+	    key: 'render',
+	    value: function render() {
+	      var todos = ["Watch Satantango", "Second todo", "Third todo", "Fourth todo"];
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'All Todos'
+	        ),
+	        _react2.default.createElement(ShowTodos, { number: 42 })
+	      );
+	    }
+	  }]);
+
+	  return TodosContainer;
+	}(_react2.default.Component);
+
+	// ReactDOM.render(
+	//   <TodosContainer />,
+	//   document.getElementById('app')
+	// );
+
+	var ChildComponent = function (_React$Component5) {
+	  _inherits(ChildComponent, _React$Component5);
+
+	  function ChildComponent() {
+	    _classCallCheck(this, ChildComponent);
+
+	    var _this5 = _possibleConstructorReturn(this, (ChildComponent.__proto__ || Object.getPrototypeOf(ChildComponent)).call(this));
+
+	    console.log("\tChildComponent: constructor()");
+	    console.log("\tChildComponent: getInitialState()");
+	    return _this5;
+	  }
+
+	  _createClass(ChildComponent, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      console.log("\tChildComponent: componentWillMount()");
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      console.log("\tChildComponent: render()");
+	      return _react2.default.createElement(
+	        'p',
+	        null,
+	        'Child Component: ',
+	        this.props.text
+	      );
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      console.log("\tChildComponent: componentDidMount()");
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      console.log("\tChildComponent: componentWillUnmount()");
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      // The properties have been updated
+	      console.log("\tChildComponent: componentWillReceiveProps()");
+	    }
+	  }, {
+	    key: 'shouldComponentUpdate',
+	    value: function shouldComponentUpdate(nextProps, nextState) {
+	      // When you are changing lots of HTML, this is a good thing to customize
+	      console.log("\tChildComponent: shouldComponentUpdate()");
+	      return true;
+	    }
+	  }, {
+	    key: 'componentWillUpdate',
+	    value: function componentWillUpdate() {
+	      // React is about to start updating your page with the new component markup
+	      console.log("\tChildComponent: componentWillUpdate()");
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(previousProps, previousState, nextProps, nextState) {
+	      // React has changed the HTML - it is now visible to the user
+	      console.log("\tChildComponent: componentDidUpdate");
+	    }
+	  }]);
+
+	  return ChildComponent;
+	}(_react2.default.Component);
+
+	ChildComponent.defaultProps = {}; // getDefaultProps
+	ChildComponent.propTypes = {}; // propTypes
+
+	var ParentComponent = function (_React$Component6) {
+	  _inherits(ParentComponent, _React$Component6);
+
+	  function ParentComponent() {
+	    _classCallCheck(this, ParentComponent);
+
+	    var _this6 = _possibleConstructorReturn(this, (ParentComponent.__proto__ || Object.getPrototypeOf(ParentComponent)).call(this));
+
+	    console.log("ParentComponent: constructor()");
+	    console.log("ParentComponent: getInitialState()");
+	    _this6.state = {
+	      text: ''
+	    };
+	    return _this6;
+	  }
+
+	  _createClass(ParentComponent, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      // AJAX calls, anything that takes a bit of time
+	      console.log("ParentComponent: componentWillMount()");
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      console.log("ParentComponent: render()");
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'container' },
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          value: this.state.text,
+	          onChange: this.onInputChange.bind(this) }),
+	        _react2.default.createElement(ChildComponent, { text: this.state.text })
+	      );
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      // The HTML is on the page and visible
+	      console.log("ParentComponent: componentDidMount()");
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      // This component is about to be removed to the page
+	      // Turn off timers, stop animations
+	      console.log("ParentComponent: componentWillUnmount()");
+	    }
+	  }, {
+	    key: 'onInputChange',
+	    value: function onInputChange(e) {
+	      var letter = e.target.value;
+	      this.setState({ // Explicit mutation
+	        text: letter
+	      });
+	    }
+	  }]);
+
+	  return ParentComponent;
+	}(_react2.default.Component);
+
+	_reactDom2.default.render(_react2.default.createElement(ParentComponent, null), document.getElementById('app'));
 
 /***/ },
 /* 2 */
