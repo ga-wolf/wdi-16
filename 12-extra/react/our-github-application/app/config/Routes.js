@@ -4,6 +4,9 @@ import ReactRouter, { Router, Route, IndexRoute, hashHistory } from 'react-route
 import Main from '../components/Main.js';
 import Home from '../components/Home.jsx';
 import Search from '../components/Search.js';
+import UserDetails from '../components/UserDetails.js';
+
+import GithubHelpers from '../utils/GithubHelpers.js';
 
 const Routes = (
   <Router history={hashHistory}>
@@ -11,6 +14,7 @@ const Routes = (
       <IndexRoute component={Home} />
       <Route path="/home" component={Home} />
       <Route path="/search" component={Search} />
+      <Route path="/details/:username" component={UserDetails} />
     </Route>
   </Router>
 );

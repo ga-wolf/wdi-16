@@ -3,6 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Our Github App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <style>
+    body {
+      font-family: 'Operator Mono', monospace;
+    }
+    .appear-enter {
+      transition: opacity 0.5s ease-in-out;
+      opacity: 0;
+    }
+    .appear-enter.appear-enter-active {
+      opacity: 1;
+    }
+    .appear-leave {
+      opacity: 0;
+    }
+  </style>
 </head>
 <body>
 
