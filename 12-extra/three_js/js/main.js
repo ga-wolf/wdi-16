@@ -125,6 +125,11 @@ app.init = function () {
   app.axes = new THREE.AxisHelper( 40 );
   app.scene.add( app.axes );
 
+  app.controls = new THREE.OrbitControls(
+    app.camera,
+    app.renderer.domElement
+  );
+
   var output = document.getElementById('output');
   output.appendChild( app.renderer.domElement );
 
@@ -143,4 +148,14 @@ app.init = function () {
   app.renderer.render( app.scene, app.camera );
 };
 
+app.onResize = function () {
+  app.width = window.innerWidth;
+  app.height = window.innerHeight;
+  app.camera.aspect = app.width / app.height;
+  app.camera.updateProjectionMatrix();
+
+  app.renderer.setSize( app.width, app.height );
+};
+
 window.onload = app.init;
+window.addEventListener( 'resize', app.onResize );
